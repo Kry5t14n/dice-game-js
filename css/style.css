@@ -1,0 +1,54 @@
+:root {
+    --color-dark0: #011728;
+    --color-dark1: #01243D;
+    --color-dark2: #013B65;
+    --color-dark3: #014F86;
+
+    --color-light0: #D0E9F1;
+    --color-light1: #B2D7E6;
+    --color-light2: #89BCD1;
+    --color-light3: #68A6C0;
+}
+
+* {
+    color: var(--color-dark0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    background-color: var(--color-light0);
+    height: 100vh;
+    justify-content: center;
+}
+
+main {
+    background-color: var(--color-light1);
+    height: 80%;
+    width: 50%;
+}
+
+h1 {
+    height: 10%;
+}
+
+.player-box {
+    display: inline-flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: center;
+    width: 50%;
+}
+
+.score {
+    height: 20%;
+}
+
+.score-content {
+    display: inline-flex;
+}
