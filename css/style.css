@@ -11,6 +11,7 @@
 }
 
 * {
+    box-sizing: border-box;
     color: var(--color-dark0);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -37,12 +38,15 @@ h1 {
     height: 10%;
 }
 
+.players-main {
+    display: flex;
+    height: 70%;
+    justify-content: space-around;
+}
+
 .player-box {
     display: inline-flex;
     flex-direction: column;
-    height: 70%;
-    justify-content: center;
-    width: 50%;
 }
 
 .score {
