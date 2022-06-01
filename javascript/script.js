@@ -1,3 +1,5 @@
+const dices = ['img/dice1.png', 'img/dice2.png', 'img/dice3.png', 'img/dice4.png', 'img/dice5.png', 'img/dice6.png'];
+
 const player1_button = document.getElementById('player1-button');
 const player1_dice = document.getElementById('player1-dice');
 const player1_score = document.getElementById('player1-score');
@@ -13,78 +15,35 @@ const reset_button = document.getElementById('reset-button');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  };
 
 
-async function roll(dice, button) {
+async function roll(button, dice, score, score_value) {
     let rand_num = 0;
-    button.value = "ROLLING..."
+    button.value = "ROLLING...";
     for (let i=0; i<=19; i++) {
         rand_num = Math.floor(Math.random() * 6);
-        switch(rand_num) {
-            case 0:
-                dice.src = 'img/dice1.png';
-                break;
-            case 1:
-                dice.src = 'img/dice2.png';
-                break;
-            case 2:
-                dice.src = 'img/dice3.png';
-                break;
-            case 3:
-                dice.src = 'img/dice4.png';
-                break;
-            case 4:
-                dice.src = 'img/dice5.png';
-                break;
-            case 5:
-                dice.src = 'img/dice6.png';
-                break;
-        }
+        dice.src = dices[rand_num];
         await sleep(100);
-    }
-    button.value = 'WAIT'
-}
-
-function updateScore(dice, score) {
-    switch(dice) {
-        case 'img/dice1.png':
-            score += 1;
-            break;
-        case 'img/dice2.png':
-            score += 2;
-            break;
-        case 'img/dice3.png':
-            score += 3;
-            break;
-        case 'img/dice4.png':
-            score += 4;
-            break;
-        case 'img/dice5.png':
-            score += 5;
-            break;
-        case 'img/dice6.png':
-            score += 6;
-            break;
-    }
-    return score;
-}
+    };
+    button.value = 'WAIT';
+    score_value += rand_num + 1;
+    score.innerHTML = score_value;
+};
 
 
 player1_button.addEventListener('click', async function(event) {
     if(player2_button.value === 'WAIT') {
-        roll(player1_dice, player1_button);
+        roll(player1_button, player1_dice, player1_score, player1_score_value);
         await sleep(2000);
-        console.log(updateScore(player1_dice.src, player1_score_value))
         player2_button.value = 'ROLL';
     }
 });
 
 player2_button.addEventListener('click', async function(event) {
     if(player1_button.value === 'WAIT') {
-        roll(player2_dice, player2_button);
+        roll(player2_button, player2_dice, player2_score, player2_score_value);
         await sleep(2000);
-        console.log(updateScore(player2_dice.src, player2_score_value))
         player1_button.value = 'ROLL';
     }
 });
